@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ypsilon Kripto Bot Paneli</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bs-primary: #007bff;
+        --bs-primary-rgb: 0, 123, 255;
+        --bs-dark: #212529;
+        --bs-light: #f8f9fa;
+        --bs-gray-800: #343a40;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #212529;
+        color: #f8f9fa;
+        min-height: 100vh;
+      }
+      .main-content {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
+      .card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        background-color: #2c3135;
+        color: #f8f9fa;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      .card-header {
+        background-color: #007bff;
+        color: white;
+        border-radius: 1rem 1rem 0 0;
+        font-weight: 600;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: bold;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+        transform: translateY(-2px);
+      }
+      .form-control,
+      .form-control:focus {
+        background-color: #3e444a;
+        border: 1px solid #495057;
+        color: #f8f9fa;
+      }
+      .form-control:focus {
+        border-color: var(--bs-primary);
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+      }
+      .form-label {
+        color: #adb5bd;
+      }
+      .trade-log-row-buy {
+        background-color: #1e3a2b; /* Koyu yeşil tonu */
+      }
+      .trade-log-row-sell {
+        background-color: #492b2d; /* Koyu kırmızı tonu */
+      }
+      .table {
+        color: #f8f9fa;
+      }
+      .table-bordered {
+        border-color: #495057;
+      }
+      .table-bordered td,
+      .table-bordered th {
+        border-color: #495057;
+      }
+      .table-hover tbody tr:hover {
+        background-color: #495057 !important;
+      }
+      .table-dark {
+        background-color: #3e444a;
+        color: #f8f9fa;
+      }
+      .list-group-item {
+        border: none;
+        background-color: transparent;
+        color: #adb5bd;
+      }
+      .list-group-item strong {
+        color: #f8f9fa;
+      }
+      .list-group-item i {
+        color: var(--bs-primary);
+        margin-right: 0.5rem;
+      }
+      .status-badge {
+        font-size: 0.9em;
+        padding: 0.5em 1em;
+        border-radius: 0.5rem;
+      }
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1620023403212-d9c02d13b482?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+            no-repeat center center;
+        background-size: cover;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      .hero-section h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+      /* Switch Checkbox Stili */
+      .form-check-input:checked {
+        background-color: #dc3545; /* Kırmızı renk - Stop anlamında */
+        border-color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container main-content">
+      <div class="hero-section text-center">
+        <div class="p-3">
+          <img
+            src="/assets/img/ypsilon2.png"
+            alt="Ypsilon Logo"
+            class="mb-3"
+            style="height: 120px; width: auto; max-width: 100%"
+          />
+          <p class="lead">Akıllı, Hızlı ve Güvenilir Kripto Bot Paneli</p>
+        </div>
+      </div>
+      <div class="card p-4 mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h5 mb-0 text-white">Canlı İşlemler</h2>
+          <span class="badge bg-success status-badge">🟢 Bot Çalışıyor</span>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>Zaman</th>
+                <th>Coin</th>
+                <th>İşlem</th>
+                <th>Miktar</th>
+                <th>Fiyat</th>
+                <th>USDT Tutarı</th>
+              </tr>
+            </thead>
+            <tbody id="trade-log-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card p-4">
+        <div class="card-header text-center py-3">
+          <h1 class="h4 mb-0">Bot Ayarları</h1>
+        </div>
+        <div class="card-body">
+          <h2 class="h5 mt-3 mb-3 text-white">Bot Parametreleri</h2>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">
+              <i class="bi bi-gear"></i><strong>symbols:</strong> Analiz
+              edilecek coin çiftleri (Örn: BTCUSDT).
+            </li>
+            <li class="list-group-item">
+              <i class="bi bi-clock"></i><strong>interval:</strong> Mum
+              grafiklerinin zaman aralığı (Örn: 1m = 1 dakika).
+            </li>
+            <li class="list-group-item">
+              <i class="bi bi-graph-up"></i><strong>volume_multiplier:</strong>
+              Hacim patlaması kat sayısı.
+            </li>
+            <li class="list-group-item">
+              <i class="bi bi-currency-dollar"></i><strong>usdt_amount:</strong>
+              İşlem başına USDT.
+            </li>
+            <li class="list-group-item">
+              <i class="bi bi-bar-chart-line"></i
+              ><strong>max_trades_limit:</strong> Maksimum işlem/pozisyon
+              sayısı.
+            </li>
+          </ul>
+
+          <form id="bot-form">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">SYMBOLS (virgülle ayır)</label>
+                <input
+                  type="text"
+                  name="symbols"
+                  class="form-control"
+                  value="COTIUSDT,STORJUSDT"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">INTERVAL</label>
+                <input
+                  type="text"
+                  name="interval"
+                  class="form-control"
+                  value="1m"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">LIMIT</label>
+                <input
+                  type="number"
+                  name="limit"
+                  class="form-control"
+                  value="15"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">VOLUME_MULTIPLIER</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="volume_multiplier"
+                  class="form-control"
+                  value="2"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">PRICE_INCREASE_THRESHOLD (%)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  name="price_increase_threshold"
+                  class="form-control"
+                  value="1"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">STOP_LOSS_THRESHOLD (%)</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  name="stop_loss_threshold"
+                  class="form-control"
+                  value="-0.7"
+                />
+              </div>
+              <div class="col-12 mb-3">
+                <label class="form-label">USDT Amount</label>
+                <input
+                  type="number"
+                  step="0.01"
+                  name="usdt_amount"
+                  class="form-control"
+                  value="10"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">MAKSİMUM TOPLAM USDT</label>
+                <input
+                  type="number"
+                  name="max_usdt_limit"
+                  class="form-control"
+                  value="100"
+                />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">MAKSİMUM İŞLEM SAYISI</label>
+                <input
+                  type="number"
+                  name="max_trades_limit"
+                  class="form-control"
+                  value="5"
+                />
+                <div class="form-check form-switch mt-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="oneShotCheck"
+                    name="one_shot_mode"
+                  />
+                  <label
+                    class="form-check-label text-white-50 small"
+                    for="oneShotCheck"
+                  >
+                    Limiti doldurunca tamamen dur (Satılsa bile yeni alma)
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">COOLDOWN SAATİ</label>
+                <input
+                  type="number"
+                  name="cooldown_hours"
+                  class="form-control"
+                  value="1"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">COOLDOWN MUM SAYISI</label>
+                <input
+                  type="number"
+                  name="cooldown_candles"
+                  class="form-control"
+                  value="4"
+                />
+              </div>
+              <div class="col-12 mb-3">
+                <label class="form-label">Telegram Bot Token</label>
+                <input type="text" name="telegram_token" class="form-control" />
+              </div>
+              <div class="col-12 mb-3">
+                <label class="form-label">Telegram Chat ID</label>
+                <input
+                  type="text"
+                  name="telegram_chat_id"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-12 mb-3">
+                <label class="form-label">Binance API Key</label>
+                <input
+                  type="text"
+                  name="binance_api_key"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-12 mb-4">
+                <label class="form-label">Binance Secret Key</label>
+                <input
+                  type="text"
+                  name="binance_api_secret"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              Botu Başlat 🚀
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const statusBadge = document.querySelector(".status-badge");
+      const startButton = document.querySelector(
+        "#bot-form button[type='submit']"
+      );
+      const tradeLogBody = document.getElementById("trade-log-body");
+      let isBotRunning = false;
+      function updateStatus(emoji, text, colorClass) {
+        statusBadge.classList.remove("bg-success", "bg-warning", "bg-danger");
+        statusBadge.classList.add(colorClass);
+        statusBadge.textContent = `${emoji} ${text}`;
+      }
+      updateStatus("🔴", "Bot Çalışmıyor", "bg-danger");
+
+      document
+        .getElementById("bot-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          updateStatus("🟡", "Bot hazırlanıyor...", "bg-warning");
+          startButton.disabled = true;
+          const formData = new FormData(this);
+          const jsonData = {};
+
+          // Checkbox kontrolü
+          const oneShotCheck = document.getElementById("oneShotCheck");
+
+          formData.forEach((value, key) => {
+            if (key === "symbols") {
+              jsonData[key] = value
+                .split(",")
+                .map((s) => s.trim().toUpperCase());
+            } else if (
+              key === "usdt_amount" ||
+              key === "price_increase_threshold" ||
+              key === "stop_loss_threshold" ||
+              key === "volume_multiplier" ||
+              key === "cooldown_hours"
+            ) {
+              jsonData[key] = parseFloat(value);
+            } else if (
+              key === "limit" ||
+              key === "max_usdt_limit" ||
+              key === "max_trades_limit" ||
+              key === "cooldown_candles"
+            ) {
+              jsonData[key] = parseInt(value);
+            } else if (key !== "one_shot_mode") {
+              // one_shot_mode'u manuel ekleyeceğiz
+              jsonData[key] = value;
+            }
+          });
+
+          // Checkbox durumunu manuel ekle
+          jsonData["one_shot_mode"] = oneShotCheck.checked;
+
+          fetch("http://localhost:5000/start-bot", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(jsonData),
+          })
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error("API isteği başarısız: " + res.statusText);
+              }
+              return res.json();
+            })
+            .then((data) => {
+              updateStatus("🟢", "Bot Çalışıyor", "bg-success");
+              isBotRunning = true;
+              startButton.disabled = false;
+              alert(data.message);
+            })
+            .catch((err) => {
+              updateStatus("🔴", "Bot Çalışmıyor", "bg-danger");
+              isBotRunning = false;
+              startButton.disabled = false;
+              alert("Hata oluştu: " + err);
+            });
+        });
+
+      function fetchTradeLog() {
+        if (!isBotRunning) {
+          return;
+        }
+        fetch("http://localhost:5000/trade-log")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("API isteği başarısız: " + response.statusText);
+            }
+            return response.json();
+          })
+          .then((log) => {
+            tradeLogBody.innerHTML = "";
+            log.reverse().forEach((trade) => {
+              const row = document.createElement("tr");
+              const date = new Date(trade.ts);
+              const formattedTime = date.toLocaleTimeString("tr-TR", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+              });
+              let actionClass = "";
+              let rowClass = "";
+              if (trade.side === "BUY") {
+                actionClass = "text-success fw-bold";
+                rowClass = "trade-log-row-buy";
+              } else if (trade.side === "SELL") {
+                actionClass = "text-danger fw-bold";
+                rowClass = "trade-log-row-sell";
+              }
+              row.classList.add(rowClass);
+              row.innerHTML = `
+                    <td>${formattedTime}</td>
+                    <td>${trade.symbol}</td>
+                    <td class="${actionClass}">${trade.side}</td>
+                    <td>${trade.qty.toFixed(8)}</td>
+                    <td>${trade.price.toFixed(4)}</td>
+                    <td>$${trade.amount_usdt.toFixed(2)}</td>
+                    `;
+              tradeLogBody.appendChild(row);
+            });
+          })
+          .catch((error) => {
+            console.error("İşlem günlüğü alınamadı:", error);
+          });
+      }
+      setInterval(fetchTradeLog, 3000);
+    </script>
+  </body>
+</html>
