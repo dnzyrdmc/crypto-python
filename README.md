@@ -20,15 +20,16 @@ orders on profit target or stop-loss.
 - Binance API key & secret
 - Telegram bot token & chat ID
 
+## Related articles:
+- Binance API’si ile Otomatik Ticaret Botu Oluşturmaya Giriş - https://medium.com/@denizyardimci/binance-apisi-ile-otomatik- ticaret-botu-olu%C5%9Fturmaya-giri%C5%9F-6d9970bed9bb
+
+- Binance API ile Otomatik Ticaret Botu Oluşturmaya Giriş (Bölüm 2) - https://medium.com/@denizyardimci/binance-api-ile- otomatik-ticaret-botu-olu%C5%9Fturmaya-giri%C5%9F-b%C3%B6l%C3%BCm-2-c8e710e9c7c7
+
+## Other Articles: 
+- Deniz Yardımcı - https://medium.com/@denizyardimci
+
 ## Usage
 ```python
 from bot import run_bot
 run_bot(config)
 
-Related articles:
-- Binance API’si ile Otomatik Ticaret Botu Oluşturmaya Giriş - https://medium.com/@denizyardimci/binance-apisi-ile-otomatik-    ticaret-botu-olu%C5%9Fturmaya-giri%C5%9F-6d9970bed9bb
-
-- Binance API ile Otomatik Ticaret Botu Oluşturmaya Giriş (Bölüm 2) - https://medium.com/@denizyardimci/binance-api-ile-otomatik-ticaret-botu-olu%C5%9Fturmaya-giri%C5%9F-b%C3%B6l%C3%BCm-2-c8e710e9c7c7
-
-Other Articles: 
-- Deniz Yardımcı - https://medium.com/@denizyardimci
