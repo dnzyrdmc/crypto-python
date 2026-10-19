@@ -88,7 +88,7 @@ Tests cover validation, duplicate starts, connection-failure status, buy/take-pr
 
 </details>
 
-## Related articles
+## Related articles I wrote
 
 - [Binance API’si ile Otomatik Ticaret Botu Oluşturmaya Giriş](https://medium.com/@denizyardimci/binance-apisi-ile-otomatik-ticaret-botu-olu%C5%9Fturmaya-giri%C5%9F-6d9970bed9bb)
 - [Binance API ile Otomatik Ticaret Botu Oluşturmaya Giriş (Part 2)](https://medium.com/@denizyardimci/binance-api-ile-otomatik-ticaret-botu-olu%C5%9Fturmaya-giri%C5%9F-b%C3%B6l%C3%BCm-2-c8e710e9c7c7)
